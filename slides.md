@@ -51,15 +51,16 @@ transition: fade-out
     ```txt
     database
     └── book
-        ├── all_ids          所有 ID 的集合
-        ├── indices          倒排索引表中关键字与其条目的对应关系
-        └── index            所有关键字的倒排索引表项
+        ├── all_ids            所有 ID 的集合
+        ├── indices            倒排索引表中关键字与其条目的对应关系
+        └── index              所有关键字的倒排索引表项
             ├── keyword1.idx   keyword1 的 doc_ids
             ├── keyword2.idx   keyword2 的 doc_ids
             ├── ...
             └── keywordn.idx   keywordn 的 doc_ids
     ```
     - 使用 `get(keyword)`，`get_size(keyword)` 来进行基本的查询操作
+    - 支持按块压缩和 Lazy Loading
 
 </v-clicks>
 
