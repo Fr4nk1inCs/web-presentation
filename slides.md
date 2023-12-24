@@ -86,6 +86,52 @@ transition: fade-out
 
 ---
 
+# 阶段一：总结
+
+1. 加载数据库
+    ```python
+    movie_database = InvertedIndex.load(MOVIE_DATA_DIR)
+    book_database = InvertedIndex.load(BOOK_DATA_DIR)
+    ```
+2. 解析查询语句
+    ```python
+    query_str = input("Query (Press CTRL+C to exit): ")
+    try:
+        query = Query.parse(query_str)
+    except Exception as e:
+        print("Invalid query:", e)
+        continue
+    ```
+3. 查询并展示
+    ```python
+    query_books = query.query(book_database)
+    query_movies = query.query(movie_database)
+    display_results(query_books, query_movies)
+    ```
+---
+
+# 阶段一：总结
+\
+运行效果：
+
+```txt {1|1-3|1-11|1-13}
+$ python main.py
+Example query: A AND B AND NOT C / (A OR B) AND C
+Query (Press CTRL+C to exit): 信息 AND 科幻
+Found books:
+- 《三体》 by 刘慈欣: https://book.douban.com/subject/2567698
+Found movies:
+- 《变形金刚 Transformers》(动作, 科幻): https://movie.douban.com/subject/1794171
+- 《变形金刚2 Transformers: Revenge of the Fallen》(动作, 科幻, 冒险): https://movie.douban.com/subject/2146991
+- 《侏罗纪公园 Jurassic Park》(科幻, 惊悚, 冒险): https://movie.douban.com/subject/1292523
+- 《我，机器人 I, Robot》(动作, 科幻, 悬疑, 惊悚): https://movie.douban.com/subject/1308843
+--------------------------------------------
+Query (Press CTRL+C to exit): ^C
+exiting...
+```
+
+---
+
 # 阶段二：推荐
 
 <div style="display: flex; justify-content: space-between; flex-direction: column; height: 90%;">
