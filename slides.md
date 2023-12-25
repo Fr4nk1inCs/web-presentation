@@ -89,6 +89,8 @@ transition: fade-out
 
 # 阶段一：总结
 
+<v-clicks>
+
 1. 加载数据库
     ```python
     movie_database = InvertedIndex.load(MOVIE_DATA_DIR)
@@ -109,6 +111,9 @@ transition: fade-out
     query_movies = query.query(movie_database)
     display_results(query_books, query_movies)
     ```
+
+</v-clicks>
+
 ---
 
 # 阶段一：总结
